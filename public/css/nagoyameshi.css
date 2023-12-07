@@ -144,3 +144,28 @@ label {
     letter-spacing: normal;
     color: #0fbe9f;
 }
+
+.nm-header-container {
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+.nm-header-search-input {
+    border: solid 1px #e5e5e5;
+}
+
+.nm-header-search-button {
+    background-color: #0fbe9f;
+}
+
+.nm-header-search-icon {
+    color: #ffffff;
+}
+
+.nm-header-fav-icon {
+    color: #191919;
+}
+
+.nm-header-shoppingcart-icon {
+    color: #ffffff;
+}
