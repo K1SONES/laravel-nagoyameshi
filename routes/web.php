@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RestaurantController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,7 @@ Route::controller(UserController::class)->group(function () {
     Route::put('users/mypage', 'update')->name('mypage.update');
 });
 Route::resource('products', ProductController::class)->middleware(['auth', 'verified']);
+Route::resource('restaurants', RestaurantController::class);
 Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
