@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Restaurant;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class RestaurantController extends Controller
@@ -27,7 +28,9 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        return view('restaurants.create');
+        $categories = Category::all();
+
+        return view('restaurants.create', compact('categories'));
     }
 
     /**
@@ -38,7 +41,17 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $restaurant = new restaurant();
+        $restaurant->restaurant_name = $request->input('restaurant_name');
+        $restaurant->postal_code = $request->input('postal_code');
+        $restaurant->address = $request->input('address');
+        $restaurant->phone = $request->input('phone');
+        $restaurant->opening_hour = $request->input('opening_hour');
+        $restaurant->regular_holiday = $request->input('regular_holiday');
+        $restaurant->category_id = $request->input('category_id');
+        $restaurant->save();
+
+        return to_route('restaurants.index');
     }
 
     /**
@@ -49,7 +62,7 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-        //
+        return view('restaurant.show',compact('resutaurant'));
     }
 
     /**
@@ -60,7 +73,7 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
-        //
+        return view('restaurants.edit', compact('restaurant'));
     }
 
     /**
@@ -72,7 +85,15 @@ class RestaurantController extends Controller
      */
     public function update(Request $request, Restaurant $restaurant)
     {
-        //
+        $restaurant->restaurant_name = $request->input('restaurant_name');
+        $restaurant->postal_code = $request->input('postal_code');
+        $restaurant->address = $request->input('address');
+        $restaurant->phone = $request->input('phone');
+        $restaurant->opening_hour = $request->input('opening_hour');
+        $restaurant->regular_holiday = $request->input('regular_holiday');
+        $restaurant->update();
+        
+        return to_route('restaurants.index');
     }
 
     /**
